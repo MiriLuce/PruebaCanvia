@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace PruebaEscrita
+namespace Problemas
 {
     class Program
     {
@@ -42,13 +42,13 @@ namespace PruebaEscrita
 
         /* PROBLEMA NRO 1 : CALCULO DE SALARIOS */
 
-        static public int CalculoSalarios(char[,] matrizEmpleados) 
+        static public int CalculoSalarios(char[,] matrizEmpleados)
         {
-            int cantEmpleados = (int) Math.Sqrt(matrizEmpleados.Length);
+            int cantEmpleados = (int)Math.Sqrt(matrizEmpleados.Length);
             String[] listaEmpleados = new String[cantEmpleados];
 
             // Lista de subordinados para cada empleado
-            for (int i = 0; i < cantEmpleados; i++) 
+            for (int i = 0; i < cantEmpleados; i++)
             {
                 String subordinados = "";
                 for (int j = 0; j < cantEmpleados; j++)
@@ -77,7 +77,7 @@ namespace PruebaEscrita
         static public int BuenosAmigos(Int64 distLibros, int cantMejoresAmi, Int64 distMejoresAmi, int cantCompa, Int64 distCompa)
         {
             Int64 distFaltante = distLibros;
-            
+
             if (distFaltante < 0) return -1; //  El recorrido ofrecido no alcanza
             else if (distFaltante == 0) return 0; // Recorrido completo
             else if (cantMejoresAmi > 0)
@@ -106,6 +106,5 @@ namespace PruebaEscrita
             else
                 return distInicial * 2 - distMaxima; // Lo que dejó por recorrer
         }
-
     }
 }

@@ -35,8 +35,8 @@
 # Visual Studio Settings
 .vs
 
-PruebaEscrita/bin
-PruebaEscrita/obj
+Problemas/Problemas/bin
+Problemas/Problemas/obj
 
-PruebaTecnicaAPI/bin
-PruebaTecnicaAPI/obj
+Backend/Backend/bin
+Backend/Backend/obj
