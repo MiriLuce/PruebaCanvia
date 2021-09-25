@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+
+# Visual Studio Settings
+.vs
+
+PruebaEscrita/bin
+PruebaEscrita/obj
+
+PruebaTecnicaAPI/bin
+PruebaTecnicaAPI/obj
