@@ -9,6 +9,7 @@ namespace PruebaTecnicaAPI.Models
     {
         public int bookId { get; set; }
         public int authorId { get; set; }
+        public Authors author { get; set; }
         public String title { get; set; }
         public String genre { get; set; }
         public decimal stock { get; set; }

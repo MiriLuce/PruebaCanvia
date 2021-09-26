@@ -88,8 +88,12 @@ namespace PruebaTecnicaAPI.Controllers
             try
             {
                 BookRepository repository = new BookRepository(dbConnection);
+                AuthorRepository authorRepository = new AuthorRepository(dbConnection);
                 List<Books> list = repository.List();
-                list.ForEach(book => book.getFormatDate());
+                list.ForEach(book => {
+                    book.getFormatDate();
+                    book.author = authorRepository.Detail(book.authorId);
+                });
                 result.data = list;
             }
             catch (Exception ex)

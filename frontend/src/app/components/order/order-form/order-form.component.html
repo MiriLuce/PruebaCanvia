@@ -1,0 +1,63 @@
+<h1 class="text-center"><strong>Regisro de Ordenes</strong></h1>
+<div class="row">
+    <h4 class="text-left">Datos</h4>
+    <hr>
+    <form [formGroup]="formOrder" (ngSubmit)="saveOrder()">
+        <table class="table-input" cellspacing="0"><tr>
+            <td><mat-form-field appearance="fill">
+                <mat-label>Cliente</mat-label>
+                <input matInput type="number" formControlName="customerId">
+            </mat-form-field></td>
+            <td><mat-form-field appearance="fill">
+                <mat-label>Fecha de entrega</mat-label>
+                <input matInput [matDatepicker]="pickerShippedDate" formControlName="shippedDateStr">
+                <mat-datepicker-toggle matSuffix [for]="pickerShippedDate"></mat-datepicker-toggle>
+                <mat-datepicker #pickerShippedDate></mat-datepicker>
+            </mat-form-field></td>
+        </tr></table>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit" [disabled]="formOrder.invalid" >Guardar</button>
+        </div>  
+    </form>
+</div>
+<div class="row">
+    <h4 class="text-left">Items</h4>
+    <hr>
+    <form [formGroup]="formOrderItems" (ngSubmit)="saveOrderItems()">
+        <table class="table-input" cellspacing="0"><tr>
+            <td><mat-form-field appearance="fill">
+                <mat-label>Libro</mat-label>
+                <input matInput type="number" formControlName="bookId">
+            </mat-form-field></td>
+            <td><mat-form-field appearance="fill">
+                <mat-label>Cantidad</mat-label>
+                <input matInput type="number" formControlName="quantity">
+            </mat-form-field></td>
+        </tr></table>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit" [disabled]="formOrderItems.invalid" >Agregar</button>
+        </div>  
+    </form>
+</div>
+<div class="row">
+    <h4 class="text-left">Lista</h4>
+    <hr>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="orderFormService.list">
+            <ng-container matColumnDef="book">
+                <th mat-header-cell *matHeaderCellDef> Libro </th>
+                <td mat-cell *matCellDef="let element"> {{element.book.title}} </td>
+            </ng-container>
+            <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+            </ng-container>
+            <ng-container matColumnDef="total">
+                <th mat-header-cell *matHeaderCellDef> Total </th>
+                <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

@@ -81,7 +81,7 @@ namespace PruebaTecnicaAPI.Controllers
             return result;
         }
 
-        [HttpPut]
+        [HttpGet]
         [Route("calculate")]
         public ServiceResult Calculate(int orderId)
         {
@@ -108,8 +108,13 @@ namespace PruebaTecnicaAPI.Controllers
             try
             {
                 OrderRepository repository = new OrderRepository(dbConnection);
+                CustomerRepository customerRepository = new CustomerRepository(dbConnection);
                 List<Orders> list = repository.List();
-                list.ForEach(order => order.getFormatDate());
+                list.ForEach(order =>
+                {
+                    order.getFormatDate();
+                    order.customer = customerRepository.Detail(order.customerId);
+                });
                 result.data = list;
             }
             catch (Exception ex)

@@ -9,6 +9,7 @@ namespace PruebaTecnicaAPI.Models
     {
         public int orderId { get; set; }
         public int customerId { get; set; }
+        public Customers customer { get; set; }
         public String orderStatus { get; set; }
         public String requiredDateStr { get; set; }
         public String shippedDateStr { get; set; }

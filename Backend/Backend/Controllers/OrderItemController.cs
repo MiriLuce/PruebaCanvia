@@ -30,7 +30,9 @@ namespace PruebaTecnicaAPI.Controllers
             try
             {
                 OrderItemRepository repository = new OrderItemRepository(dbConnection);
+                OrderRepository orderRepository = new OrderRepository(dbConnection);
                 orderItem = repository.Create(orderItem);
+                //orderRepository.Calculate(orderItem.orderId);
                 result.data = orderItem;
             }
             catch (Exception ex)
@@ -84,7 +86,11 @@ namespace PruebaTecnicaAPI.Controllers
             try
             {
                 OrderItemRepository repository = new OrderItemRepository(dbConnection);
+                BookRepository bookRepository = new BookRepository(dbConnection);
                 List<OrderItems> list = repository.List(orderId);
+                list.ForEach(item => {
+                    item.book = bookRepository.Detail(item.bookId);
+                });
                 result.data = list;
             }
             catch (Exception ex)

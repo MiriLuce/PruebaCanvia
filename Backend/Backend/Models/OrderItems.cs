@@ -10,6 +10,7 @@ namespace PruebaTecnicaAPI.Models
         public int orderId { get; set; }
         public int orderItemId { get; set; }
         public int bookId { get; set; }
+        public Books book { get; set; }
         public decimal quantity { get; set; }
         public decimal total { get; set; }
     }
